@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>spider.png</file>
         <file>page_game.qml</file>
+        <file>cobweb.png</file>
     </qresource>
 </RCC>

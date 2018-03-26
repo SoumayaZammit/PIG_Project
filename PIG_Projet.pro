@@ -14,7 +14,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     player.cpp \
-    game.cpp \
     token.cpp \
     messagedisplay.cpp
 
@@ -33,6 +32,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     player.h \
-    game.h \
     token.h \
     messagedisplay.h

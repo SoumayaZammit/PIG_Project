@@ -57,22 +57,67 @@ ApplicationWindow {
             }
         }*/
 
-            ListModel {
-                id: theModel
+        Image {
+            id: image_cobweb
+            x: -30
+            y: 26
+            width: 500
+            height: 429
+            fillMode: Image.PreserveAspectFit
+            source: "cobweb.png"
+        }
 
-                ListElement { number: 0 }
-                ListElement { number: 1 }
-                ListElement { number: 2 }
-                ListElement { number: 3 }
-                ListElement { number: 4 }
-                ListElement { number: 5 }
-                ListElement { number: 6 }
-                ListElement { number: 7 }
-                ListElement { number: 8 }
+        ListModel {
+            id: theModel
+
+            ListElement {
+                number: 0
+                color: "#ffffff"
             }
+            ListElement {
+                number: 1
+                color: "#ffffff"
+            }
+            ListElement {
+                number: 2
+                color: "#ffffff"
+            }
+            ListElement {
+                number: 3
+                color: "#ffffff"
+            }
+            ListElement {
+                number: 4
+                color: "#ffffff"
+            }
+            ListElement {
+                number: 5
+                color: "#ffffff"
+            }
+            ListElement {
+                number: 6
+                color: "#ffffff"
+            }
+            ListElement {
+                number: 7
+                color: "#ffffff"
+            }
+            ListElement {
+                number: 8
+                color: "#ffffff"
+            }
+        }
 
-            GridView {
-                anchors.fill: parent
+        Text {
+            id: text_message
+            x: 425
+            y: 230
+            text: qsTr("C'est au Player1 de jouer")
+            font.pixelSize: 17
+        }
+
+        GridView {
+            anchors.fill: parent
             anchors.margins: 20
 
             clip: true
@@ -105,9 +150,22 @@ ApplicationWindow {
 
                 width: 40
                 height: 40
+                //color: "#ffffff"
+                border.color: "#000000"
+                border.width: 3
 
                 MouseArea {
                     anchors.fill: parent
+                    onClicked:
+                        if(theModel.get(numberDelegate).color == "#ffffff"){
+                            if(roundCount%2 == 1){
+                                theModel.setProperty(numberDelegate, "color", color=colorPlayer1)
+                            }
+                            else{
+                                theModel.setProperty(numberDelegate, "color", color=colorPlayer2)
+                            }
+                        }
+
                 }
                 states: State {
                         name: "moved"; when: mouseArea.pressed
@@ -119,6 +177,9 @@ ApplicationWindow {
                     }
             }
         }
+
+
+
 
     }
 
