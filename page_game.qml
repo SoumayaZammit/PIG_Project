@@ -57,22 +57,40 @@ ApplicationWindow {
             }
         }*/
 
-            ListModel {
-                id: theModel
+        Image {
+            id: image_cobweb
+            x: -30
+            y: 26
+            width: 500
+            height: 429
+            fillMode: Image.PreserveAspectFit
+            source: "cobweb.png"
+        }
 
-                ListElement { number: 0 }
-                ListElement { number: 1 }
-                ListElement { number: 2 }
-                ListElement { number: 3 }
-                ListElement { number: 4 }
-                ListElement { number: 5 }
-                ListElement { number: 6 }
-                ListElement { number: 7 }
-                ListElement { number: 8 }
-            }
+        ListModel {
+            id: theModel
 
-            GridView {
-                anchors.fill: parent
+            ListElement { number: 0 }
+            ListElement { number: 1 }
+            ListElement { number: 2 }
+            ListElement { number: 3 }
+            ListElement { number: 4 }
+            ListElement { number: 5 }
+            ListElement { number: 6 }
+            ListElement { number: 7 }
+            ListElement { number: 8 }
+        }
+
+        Text {
+            id: text_message
+            x: 425
+            y: 230
+            text: qsTr("C'est au Player1 de jouer")
+            font.pixelSize: 17
+        }
+
+        GridView {
+            anchors.fill: parent
             anchors.margins: 20
 
             clip: true
@@ -96,7 +114,7 @@ ApplicationWindow {
                 height: 40
                 color: "#ffffff"
                 border.color: "#000000"
-                border.width: 6
+                border.width: 3
 
 
                 MouseArea {
@@ -109,6 +127,9 @@ ApplicationWindow {
 
             }
         }
+
+
+
 
     }
 
