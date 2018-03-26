@@ -314,22 +314,50 @@ Window {
                 source: "cobweb.png"
             }
 
-            ListModel {
-                id: theModel
+            /*
+            GridView {
+                id: view
+                anchors.fill: parent
+                anchors.margins: 20
 
-                ListElement { number: 0 }
-                ListElement { number: 1 }
-                ListElement { number: 2 }
-                ListElement { number: 3 }
-                ListElement { number: 4 }
-                ListElement { number: 5 }
-                ListElement { number: 6 }
-                ListElement { number: 7 }
-                ListElement { number: 8 }
+                clip: true
+
+                model: 9
+
+                cellWidth: 180
+                cellHeight: 200
+
+                delegate: numberDelegate
+                //spacing: 5
             }
 
-            GridView {
-                anchors.fill: parent
+            Component {
+                id: numberDelegate
+
+                Rectangle {
+                    width: 40
+                    height: 40
+                    color: "#179e3d"
+                    //text: index
+                }
+            }*/
+
+                ListModel {
+                    id: theModel
+
+                    ListElement { number: 0 }
+                    ListElement { number: 1 }
+                    ListElement { number: 2 }
+                    ListElement { number: 3 }
+                    ListElement { number: 4 }
+                    ListElement { number: 5 }
+                    ListElement { number: 6 }
+                    ListElement { number: 7 }
+                    ListElement { number: 8 }
+                }
+
+                GridView {
+                    anchors.fill: parent
                 anchors.margins: 20
 
                 clip: true
@@ -369,11 +397,7 @@ Window {
                     }
                 }
             }
-
         }
-
     }
-
-
-
 }
+

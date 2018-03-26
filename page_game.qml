@@ -9,11 +9,11 @@ ApplicationWindow {
     title: "My ChildWindow"
     width: 640
     height: 480
-    property alias rectangle: rectangle
+    property alias rectangle: rectangleChild
     visible: true
 
     Rectangle {
-        id: rectangle
+        id: rectangleChild
         anchors.fill: parent
         gradient: Gradient {
             GradientStop {
@@ -102,10 +102,21 @@ ApplicationWindow {
 
 
             delegate: numberDelegate
+
+            Text {
+                id: text1
+                x: 425
+                y: 317
+                width: 169
+                height: 34
+                text: qsTr("Instruction Jeu")
+                font.pixelSize: 12
+            }
         }
 
         Component {
             id: numberDelegate
+
 
             Rectangle {
                 id: wrapper
@@ -116,15 +127,17 @@ ApplicationWindow {
                 border.color: "#000000"
                 border.width: 3
 
-
                 MouseArea {
                     anchors.fill: parent
-
-                    onClicked: {
-                        theModel.remove(index);
-                    }
                 }
+                states: State {
+                        name: "moved"; when: mouseArea.pressed
+                        PropertyChanges { target: rect; x: 50; y: 50 }
+                    }
 
+                    transitions: Transition {
+                        NumberAnimation { properties: "x,y"; easing.type: Easing.InOutQuad }
+                    }
             }
         }
 
