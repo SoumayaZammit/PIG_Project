@@ -9,9 +9,10 @@ public:
     Token(int player);
     Token(int player, int pos);
     void setPos(int pos);
+    int getPosition();
     int getPlayer();
-    bool getStatus();
-    void setStauts(bool status);
+    bool getSelected();
+    void setSelected(bool status);
 private:
     int player;
     int pos;

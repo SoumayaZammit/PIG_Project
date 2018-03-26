@@ -5,6 +5,7 @@
 #include <QObject>
 #include "player.h"
 #include "token.h"
+#include "messagedisplay.h"
 using namespace std;
 
 class Game: public QObject //Permet l'intéraction avec l'interface graphique
@@ -15,7 +16,7 @@ public:
     explicit Game(string nom_Joueur1, string nom_Joueur2, QObject *parent = 0) ;
     Q_INVOKABLE void pilotage(int slot) ;
     void placementStage(int slot) ; //gère la parti quand les 6 jetons ne sont pas encore mis sur la grille
-    void deplacementStag(int slot) ; //gère la phase de déplacement des jétons
+    void deplacementStage(int slot) ; //gère la phase de déplacement des jétons
     Q_INVOKABLE QList<QString> readPos() ; //liste des positions utilisées
     Q_INVOKABLE QList<QString> readBord() ;
     Q_INVOKABLE QList<bool> readVis() ;
@@ -39,7 +40,9 @@ private:
     //zonetext message ; //objects avec les texts, joueurs et la liste dynamiques des jetons
     Player player1, player2 ;
     Token *tokenListe ;
+    MessageDisplay message;
     bool victory ;
+    int roundCount;
 
 };
 

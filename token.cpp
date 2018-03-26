@@ -26,12 +26,15 @@ void Token::setPos(int position){
     if(position>=0 && position<=8) pos = position;
     status = false ;
 }
+int Token::getPosition(){
+    return pos;
+}
 int Token::getPlayer(){
     return player;
 }
-bool Token::getStatus(){
+bool Token::getSelected(){
     return pos;
 }
-void Token::setStauts(bool s){
+void Token::setSelected(bool s){
     status = s;
 }
