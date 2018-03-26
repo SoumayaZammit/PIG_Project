@@ -5,6 +5,8 @@ import QtQuick.Controls 1.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
+
+
 Window {
     id: root
     visible: true
@@ -13,6 +15,8 @@ Window {
     property alias comboBox_Language: comboBox_Language
     property alias text_Language: text_Language
     title: qsTr("Hello World")
+
+
 
     Rectangle {
         id: rectangle8
@@ -110,6 +114,20 @@ Window {
                 id: rectangle
                 color: "#07ef07"
                 anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer2 != "#07ef07"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle1.border.color = "#00000000"
+                            rectangle2.border.color = "#00000000"
+                            rectangle3.border.color = "#00000000"
+                            colorPlayer1 = "#07ef07"
+                        }
+                    }
+                }
             }
         }
 
@@ -119,15 +137,31 @@ Window {
             y: 230
             width: 25
             height: 25
-            Rectangle {
-                id: rectangle1
-                color: "#011195"
-                anchors.fill: parent
-            }
+
             opacity: 0.6
             style: ButtonStyle {
                 background: Rectangle {
                     color: "#888888"
+                }
+            }
+
+            Rectangle {
+                id: rectangle1
+                color: "#011195"
+                anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer2 != "#011195"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle.border.color = "#00000000"
+                            rectangle2.border.color = "#00000000"
+                            rectangle3.border.color = "#00000000"
+                            colorPlayer1 = "#011195"
+                        }
+                    }
                 }
             }
         }
@@ -142,6 +176,20 @@ Window {
                 id: rectangle2
                 color: "#f40202"
                 anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer2 != "#f40202"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle.border.color = "#00000000"
+                            rectangle1.border.color = "#00000000"
+                            rectangle3.border.color = "#00000000"
+                            colorPlayer1 = "#f40202"
+                        }
+                    }
+                }
             }
             opacity: 0.6
             style: ButtonStyle {
@@ -161,6 +209,20 @@ Window {
                 id: rectangle3
                 color: "#fdfd06"
                 anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer2 != "#fdfd06"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle.border.color = "#00000000"
+                            rectangle1.border.color = "#00000000"
+                            rectangle2.border.color = "#00000000"
+                            colorPlayer1 = "#fdfd06"
+                        }
+                    }
+                }
             }
             opacity: 0.6
             style: ButtonStyle {
@@ -180,6 +242,20 @@ Window {
                 id: rectangle4
                 color: "#07ef07"
                 anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer1 != "#07ef07"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle5.border.color = "#00000000"
+                            rectangle6.border.color = "#00000000"
+                            rectangle7.border.color = "#00000000"
+                            colorPlayer2 = "#07ef07"
+                        }
+                    }
+                }
             }
             opacity: 0.6
             style: ButtonStyle {
@@ -199,6 +275,20 @@ Window {
                 id: rectangle5
                 color: "#011195"
                 anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer1 != "#011195"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle4.border.color = "#00000000"
+                            rectangle6.border.color = "#00000000"
+                            rectangle7.border.color = "#00000000"
+                            colorPlayer2 = "#011195"
+                        }
+                    }
+                }
             }
             opacity: 0.6
             style: ButtonStyle {
@@ -218,6 +308,20 @@ Window {
                 id: rectangle6
                 color: "#f40202"
                 anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer1 != "#f40202"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle4.border.color = "#00000000"
+                            rectangle5.border.color = "#00000000"
+                            rectangle7.border.color = "#00000000"
+                            colorPlayer2 = "#f40202"
+                        }
+                    }
+                }
             }
             opacity: 0.6
             style: ButtonStyle {
@@ -237,6 +341,20 @@ Window {
                 id: rectangle7
                 color: "#fdfd06"
                 anchors.fill: parent
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        if(colorPlayer1 != "#fdfd06"){
+                            parent.border.color = "#000000"
+                            parent.border.width = 2
+                            rectangle4.border.color = "#00000000"
+                            rectangle5.border.color = "#00000000"
+                            rectangle6.border.color = "#00000000"
+                            colorPlayer2 = "#fdfd06"
+                        }
+                    }
+                }
             }
             opacity: 0.6
             style: ButtonStyle {
@@ -342,22 +460,49 @@ Window {
                 }
             }*/
 
-                ListModel {
-                    id: theModel
+            ListModel {
+                id: theModel
 
-                    ListElement { number: 0 }
-                    ListElement { number: 1 }
-                    ListElement { number: 2 }
-                    ListElement { number: 3 }
-                    ListElement { number: 4 }
-                    ListElement { number: 5 }
-                    ListElement { number: 6 }
-                    ListElement { number: 7 }
-                    ListElement { number: 8 }
+                ListElement {
+                    number: 0
+                    color: "#ffffff"
                 }
+                ListElement {
+                    number: 1
+                    color: "#ffffff"
+                }
+                ListElement {
+                    number: 2
+                    color: "#ffffff"
+                }
+                ListElement {
+                    number: 3
+                    color: "#ffffff"
+                }
+                ListElement {
+                    number: 4
+                    color: "#ffffff"
+                }
+                ListElement {
+                    number: 5
+                    color: "#ffffff"
+                }
+                ListElement {
+                    number: 6
+                    color: "#ffffff"
+                }
+                ListElement {
+                    number: 7
+                    color: "#ffffff"
+                }
+                ListElement {
+                    number: 8
+                    color: "#ffffff"
+                }
+            }
 
-                GridView {
-                    anchors.fill: parent
+            GridView {
+                anchors.fill: parent
                 anchors.margins: 20
 
                 clip: true
@@ -380,13 +525,23 @@ Window {
 
                     width: 40
                     height: 40
-                    color: "#ffffff"
+                    //color: "#ffffff"
                     border.color: "#000000"
                     border.width: 3
 
                     MouseArea {
                         anchors.fill: parent
+                        onClicked:
+                            if(theModel.get(numberDelegate).color == "#ffffff"){
+                                if(roundCount%2 == 1){
+                                    theModel.setProperty(numberDelegate, "color", color=colorPlayer1)
+                                }
+                                else{
+                                    theModel.setProperty(numberDelegate, "color", color=colorPlayer2)
+                                }
+                            }
                     }
+
                     states: State {
                         name: "moved"; when: mouseArea.pressed
                         PropertyChanges { target: rect; x: 50; y: 50 }
