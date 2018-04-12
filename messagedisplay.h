@@ -9,7 +9,7 @@ class MessageDisplay
 public:
     MessageDisplay(string player1, string player2);
     Q_INVOKABLE QString getText(int tours_Jeu, bool issue) ;
-    string getInstructions() ;
+    Q_INVOKABLE QString getInstructions(int round, bool issue) ;
     void actualPlayer(string player) ;
     void winner(int winner) ;
     void start() ;
@@ -17,8 +17,8 @@ public:
     void end() ;
 
 private:
-    QString message ;
-    string player1, player2, instructions ;
+    QString message, instructions ;
+    string player1, player2 ;
 };
 
 #endif // MESSAGEDISPLAY_H

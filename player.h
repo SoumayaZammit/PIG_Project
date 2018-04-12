@@ -1,21 +1,24 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <string>
+#include <QString>
 using namespace std ;
 
 class Player
 {
 public:
-    Player(string name, string color, bool etat = false) ;
+    Player(string name, string color, bool state = false) ;
     void activatePlayer() ;
-    void desactivatePlayer() ;
+    void deactivatePlayer() ;
     bool getStatus() ;
-    string getName() ;
+    void setColor(QString color);
+    QString getName() const;
+    QString getColor() const;
 
 private:
 bool actualPlayer ;
-string name ;
-string color;
+QString name;
+QString color;
 };
 
 #endif // PLAYER_Hpublic:

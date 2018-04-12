@@ -1,20 +1,24 @@
 #include "Player.h"
 #include <string>
+#include <QString>
 #include <iostream>
 using namespace std ;
 
 
-Player::Player(string namePlayer,string colorPlayer, bool etat)
+Player::Player(string namePlayer,string colorPlayer, bool state)
 {
-    color = colorPlayer;
-    name = namePlayer ;
-    if(etat)
+    name.clear();
+    color.clear();
+    name.append(QString::fromStdString(namePlayer));
+    color.append(QString::fromStdString(colorPlayer));
+
+    if(state)
     {
         activatePlayer() ;
     }
     else
     {
-        desactivatePlayer() ;
+        deactivatePlayer() ;
     }
 }
 
@@ -23,7 +27,7 @@ void Player::activatePlayer()
     actualPlayer  = true ;
 }
 
-void Player::desactivatePlayer()
+void Player::deactivatePlayer()
 {
     actualPlayer  = false ;
 }
@@ -33,9 +37,19 @@ bool Player::getStatus()
     return actualPlayer ;
 }
 
-string Player::getName()
+QString Player::getName() const
 {
     return name ;
+}
+
+QString Player::getColor() const
+{
+    return color ;
+}
+
+void Player::setColor(QString playerColor)
+{
+    color = playerColor;
 }
 
 

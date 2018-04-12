@@ -4,5 +4,13 @@
         <file>spider.png</file>
         <file>page_game.qml</file>
         <file>cobweb.png</file>
+        <file>game.cpp</file>
+        <file>game.h</file>
+        <file>messagedisplay.cpp</file>
+        <file>messagedisplay.h</file>
+        <file>player.cpp</file>
+        <file>player.h</file>
+        <file>token.cpp</file>
+        <file>token.h</file>
     </qresource>
 </RCC>

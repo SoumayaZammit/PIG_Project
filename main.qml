@@ -4,25 +4,62 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Dialogs 1.0
 
 
 
 Window {
     id: root
     visible: true
-    width: 640
+    width: 750
     height: 480
-    property alias comboBox_Language: comboBox_Language
+    maximumHeight: 480
+    minimumHeight: 480
+    maximumWidth: 750
+    minimumWidth: 750
     property alias text_Language: text_Language
-    title: qsTr("Hello World")
+    property alias colorDialogP1: colorDialogP1
+    property alias colorDialogP2: colorDialogP2
+    title: qsTr("Game Settings") +vueGame.emptyString
 
+    ColorDialog {
+        id: colorDialogP1
+        title: "Choose your color"
+        onAccepted: {
+            vueGame.setPlayerColor(1, colorDialogP1.color)
+            console.log(colorDialogP1.color)
+            this.close()
+        }
+        onRejected: {
+            console.log("Cancelled")
+            Qt.quit()
+        }
+        Component.onCompleted: visible = false
+    }
+    ColorDialog {
+        id: colorDialogP2
+        title: "Choose your color"
+        onAccepted: {
+            vueGame.setPlayerColor(2, colorDialogP2.color)
+            console.log(colorDialogP2.color)
+            this.close()
+        }
+        onRejected: {
+            console.log("Cancelled")
+            Qt.quit()
+        }
+        Component.onCompleted: visible = false
+    }
 
 
     Rectangle {
         id: rectangle8
-        width: 640
+        x: 0
+        y: 0
+        width: 750
         height: 480
         color: "#fefcdc"
+        border.width: 0
         gradient: Gradient {
             GradientStop {
                 position: 0
@@ -46,7 +83,7 @@ Window {
 
         Text {
             id: text_Language
-            x: 320
+            x: 363
             y: 160
             height: 25
             text: qsTr("Language")
@@ -63,18 +100,9 @@ Window {
             wrapMode: Text.NoWrap
         }
 
-        ComboBox {
-            id: comboBox_Language
-            x: 420
-            y: 160
-            width: 130
-            height: 25
-            model: ["English", "Français"]
-        }
-
         Text {
             id: text_Player1
-            x: 320
+            x: 363
             y: 230
             width: 53
             height: 25
@@ -87,8 +115,8 @@ Window {
 
         Text {
             id: text_Player2
-            x: 320
-            y: 270
+            x: 364
+            y: 272
             height: 25
             text: qsTr("Player2")
             verticalAlignment: Text.AlignVCenter
@@ -98,282 +126,15 @@ Window {
         }
 
         Button {
-            id: button
-            x: 420
-            y: 230
-            width: 25
-            height: 25
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888"
-                }
-            }
-
-            Rectangle {
-                id: rectangle
-                color: "#07ef07"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer2 != "#07ef07"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle1.border.color = "#00000000"
-                            rectangle2.border.color = "#00000000"
-                            rectangle3.border.color = "#00000000"
-                            colorPlayer1 = "#07ef07"
-                        }
-                    }
-                }
-            }
-        }
-
-        Button {
-            id: button1
-            x: 455
-            y: 230
-            width: 25
-            height: 25
-
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888888"
-                }
-            }
-
-            Rectangle {
-                id: rectangle1
-                color: "#011195"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer2 != "#011195"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle.border.color = "#00000000"
-                            rectangle2.border.color = "#00000000"
-                            rectangle3.border.color = "#00000000"
-                            colorPlayer1 = "#011195"
-                        }
-                    }
-                }
-            }
-        }
-
-        Button {
-            id: button2
-            x: 490
-            y: 230
-            width: 25
-            height: 25
-            Rectangle {
-                id: rectangle2
-                color: "#f40202"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer2 != "#f40202"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle.border.color = "#00000000"
-                            rectangle1.border.color = "#00000000"
-                            rectangle3.border.color = "#00000000"
-                            colorPlayer1 = "#f40202"
-                        }
-                    }
-                }
-            }
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888888"
-                }
-            }
-        }
-
-        Button {
-            id: button3
-            x: 525
-            y: 230
-            width: 25
-            height: 25
-            Rectangle {
-                id: rectangle3
-                color: "#fdfd06"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer2 != "#fdfd06"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle.border.color = "#00000000"
-                            rectangle1.border.color = "#00000000"
-                            rectangle2.border.color = "#00000000"
-                            colorPlayer1 = "#fdfd06"
-                        }
-                    }
-                }
-            }
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888888"
-                }
-            }
-        }
-
-        Button {
-            id: button4
-            x: 420
-            y: 270
-            width: 25
-            height: 25
-            Rectangle {
-                id: rectangle4
-                color: "#07ef07"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer1 != "#07ef07"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle5.border.color = "#00000000"
-                            rectangle6.border.color = "#00000000"
-                            rectangle7.border.color = "#00000000"
-                            colorPlayer2 = "#07ef07"
-                        }
-                    }
-                }
-            }
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888888"
-                }
-            }
-        }
-
-        Button {
-            id: button5
-            x: 455
-            y: 270
-            width: 25
-            height: 25
-            Rectangle {
-                id: rectangle5
-                color: "#011195"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer1 != "#011195"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle4.border.color = "#00000000"
-                            rectangle6.border.color = "#00000000"
-                            rectangle7.border.color = "#00000000"
-                            colorPlayer2 = "#011195"
-                        }
-                    }
-                }
-            }
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888888"
-                }
-            }
-        }
-
-        Button {
-            id: button6
-            x: 490
-            y: 270
-            width: 25
-            height: 25
-            Rectangle {
-                id: rectangle6
-                color: "#f40202"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer1 != "#f40202"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle4.border.color = "#00000000"
-                            rectangle5.border.color = "#00000000"
-                            rectangle7.border.color = "#00000000"
-                            colorPlayer2 = "#f40202"
-                        }
-                    }
-                }
-            }
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888888"
-                }
-            }
-        }
-
-        Button {
-            id: button7
-            x: 525
-            y: 270
-            width: 25
-            height: 25
-            Rectangle {
-                id: rectangle7
-                color: "#fdfd06"
-                anchors.fill: parent
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        if(colorPlayer1 != "#fdfd06"){
-                            parent.border.color = "#000000"
-                            parent.border.width = 2
-                            rectangle4.border.color = "#00000000"
-                            rectangle5.border.color = "#00000000"
-                            rectangle6.border.color = "#00000000"
-                            colorPlayer2 = "#fdfd06"
-                        }
-                    }
-                }
-            }
-            opacity: 0.6
-            style: ButtonStyle {
-                background: Rectangle {
-                    color: "#888888"
-                }
-            }
-        }
-
-        Button {
             id: button_start
-            x: 453
-            y: 341
+            x: 434
+            y: 385
+            width: 102
+            height: 42
             text: qsTr("Start")
+            activeFocusOnPress: true
+            isDefault: false
             onClicked: {
-                /*var component = Qt.createComponent("page_game.qml")
-                var window = component.createObjet(childWindow)
-                window.show()
-                */
                 childWindow.visible = !childWindow.visible
                 root.visible = !root.visible
 
@@ -388,19 +149,79 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 34
         }
+
+        Button {
+            id: button
+            x: 505
+            y: 230
+            width: 130
+            height: 23
+            text: qsTr("Color P1")
+            activeFocusOnPress: true
+            onClicked:{
+                colorDialogP1.open();
+            }
+        }
+
+        Button {
+            id: button1
+            x: 505
+            y: 274
+            width: 130
+            height: 23
+            text: qsTr("Color P2")
+            activeFocusOnPress: true
+            onClicked:{
+                colorDialogP2.open();
+            }
+        }
+
+        Button {
+            id: button2
+            x: 479
+            y: 160
+            width: 75
+            height: 25
+            text: qsTr("English")
+            onClicked :vueGame.language(0)
+        }
+
+        Button {
+            id: button3
+            x: 573
+            y: 160
+            width: 75
+            height: 26
+            text: qsTr("Français")
+            onClicked :vueGame.language(1)
+        }
     }
 
     ApplicationWindow {
         id: childWindow
-        title: "My ChildWindow"
-        width: 640
+        title: "Game"
+        width: 750
         height: 480
+        maximumHeight: 480
+        minimumHeight: 480
+        maximumWidth: 750
+        minimumWidth: 750
         property alias rectangle: rectangleChild
         visible: false
-
+        property alias text1: text1
+        property alias mouseArea8: mouseArea8
+        property alias mouseArea7: mouseArea7
+        property alias mouseArea6: mouseArea6
+        property alias mouseArea5: mouseArea5
+        property alias mouseArea3: mouseArea3
+        property alias mouseArea4: mouseArea4
+        property alias mouseArea1: mouseArea1
+        property alias mouseArea2: mouseArea2
+        property alias mouseArea9: mouseArea9
         Rectangle {
             id: rectangleChild
-            anchors.fill: parent
+            width: 750
+            height: 480
             gradient: Gradient {
                 GradientStop {
                     position: 0
@@ -414,13 +235,8 @@ Window {
             }
             visible: true
 
-            Text {
-                id: text_message
-                x: 430
-                y: 230
-                text: qsTr("C'est au Player1 de jouer")
-                font.pixelSize: 17
-            }
+
+
 
             Image {
                 id: image_cobweb
@@ -432,127 +248,213 @@ Window {
                 source: "cobweb.png"
             }
 
-            /*
-            GridView {
-                id: view
-                anchors.fill: parent
-                anchors.margins: 20
-
-                clip: true
-
-                model: 9
-
-                cellWidth: 180
-                cellHeight: 200
-
-                delegate: numberDelegate
-                //spacing: 5
+            Text {
+                id: text_message
+                x: 475
+                y: 117
+                text: vueGame.currentText
+                font.pixelSize: 18
+                color: "#568203"
+                wrapMode: Text.WordWrap
+                width: rectangleChild.width
             }
 
-            Component {
-                id: numberDelegate
 
-                Rectangle {
-                    width: 40
-                    height: 40
-                    color: "#179e3d"
-                    //text: index
-                }
-            }*/
 
-            ListModel {
-                id: theModel
+            Text {
+                id: text1
+                x: 475
+                y: 217
+                text: vueGame.currentInstructions
+                font.pixelSize: 15
+                color: "#A91101"
+                wrapMode: Text.WordWrap
+                width: rectangleChild.width
 
-                ListElement {
-                    number: 0
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 1
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 2
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 3
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 4
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 5
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 6
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 7
-                    color: "#ffffff"
-                }
-                ListElement {
-                    number: 8
-                    color: "#ffffff"
-                }
             }
 
-            GridView {
-                anchors.fill: parent
-                anchors.margins: 20
-
-                clip: true
-
-                model: theModel
-
-                cellWidth: 180
-                cellHeight: 200
-
-
-                delegate: numberDelegate
+            MouseArea {
+                id: mouseArea9
+                x: -4
+                y: 212
+                width: 57
+                height: 57
+                onClicked: vueGame.play(8);
             }
 
-            Component {
-                id: numberDelegate
+            MouseArea {
+                id: mouseArea1
+                x: 386
+                y: 214
+                width: 67
+                height: 57
+                onClicked: vueGame.play(4);
+            }
+
+            MouseArea {
+                id: mouseArea2
+                x: 186
+                y: 213
+                width: 67
+                height: 57
+                onClicked: vueGame.play(7);
+            }
+
+            MouseArea {
+                id: mouseArea3
+                x: 381
+                y: 10
+                width: 67
+                height: 57
+                onClicked: vueGame.play(5);
+            }
+
+            MouseArea {
+                id: mouseArea4
+                x: 188
+                y: 9
+                width: 67
+                height: 57
+                onClicked: vueGame.play(6);
+            }
+
+            MouseArea {
+                id: mouseArea5
+                x: -10
+                y: 10
+                width: 67
+                height: 57
+                onClicked: vueGame.play(0);
+            }
+
+            MouseArea {
+                id: mouseArea6
+                x: 380
+                y: 405
+                width: 67
+                height: 57
+                onClicked: vueGame.play(1);
+            }
+
+            MouseArea {
+                id: mouseArea7
+                x: 188
+                y: 406
+                width: 67
+                height: 57
+                onClicked: vueGame.play(2);
+            }
+
+            MouseArea {
+                id: mouseArea8
+                x: -12
+                y: 404
+                width: 67
+                height: 57
+                onClicked: vueGame.play(3);
+            }
+
+            Rectangle {
+                id: token1
+                x: 1
+                y: 16
+                width: 45
+                height: 43
+                color: vueGame.gameQML[0]
+            }
+
+            Rectangle {
+                id: token2
+                x: 391
+                y: 412
+                width: 45
+                height: 43
+                color: vueGame.gameQML[1]
+            }
+
+            Rectangle {
+                id: token3
+                x: 198
+                y: 412
+                width: 45
+                height: 43
+                color: vueGame.gameQML[2]
+            }
+
+            Rectangle {
+                id: token4
+                x: 1
+                y: 412
+                width: 45
+                height: 43
+                color: vueGame.gameQML[3]
+            }
+
+            Rectangle {
+                id: token5
+                x: 396
+                y: 219
+                width: 45
+                height: 43
+                color: vueGame.gameQML[4]
+            }
+
+            Rectangle {
+                id: token6
+                x: 391
+                y: 16
+                width: 45
+                height: 43
+                color: vueGame.gameQML[5]
+            }
+
+            Rectangle {
+                id: token7
+                x: 198
+                y: 16
+                width: 45
+                height: 43
+                color: vueGame.gameQML[6]
+            }
+
+            Rectangle {
+                id: token8
+                x: 198
+                y: 219
+                width: 45
+                height: 43
+                color: vueGame.gameQML[7]
+            }
+
+            Rectangle {
+                id: token9
+                x: 1
+                y: 219
+                width: 45
+                height: 43
+                color: vueGame.gameQML[8]
+            }
+
+        }
+
+        Component {
+            id: numberDelegate
 
 
-                Rectangle {
-                    id: wrapper
+            Rectangle {
+                id: wrapper
 
-                    width: 40
-                    height: 40
-                    //color: "#ffffff"
-                    border.color: "#000000"
-                    border.width: 3
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked:
-                            if(theModel.get(numberDelegate).color == "#ffffff"){
-                                if(roundCount%2 == 1){
-                                    theModel.setProperty(numberDelegate, "color", color=colorPlayer1)
-                                }
-                                else{
-                                    theModel.setProperty(numberDelegate, "color", color=colorPlayer2)
-                                }
-                            }
-                    }
-
-                    states: State {
-                        name: "moved"; when: mouseArea.pressed
-                        PropertyChanges { target: rect; x: 50; y: 50 }
-                    }
-
-                    transitions: Transition {
-                        NumberAnimation { properties: "x,y"; easing.type: Easing.InOutQuad }
-                    }
-                }
+                width: 40
+                height: 40
+                //color: "#ffffff"
+                border.color: "#000000"
+                border.width: 3
             }
         }
     }
+
 }
+
+
+
 
