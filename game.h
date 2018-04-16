@@ -26,16 +26,19 @@ public:
     Q_INVOKABLE int getTour();
     Q_PROPERTY(QString currentText READ currentText NOTIFY changeText) ;
     Q_PROPERTY(QString currentInstructions READ currentInstructions NOTIFY changeInstruction) ;
+    Q_PROPERTY(QString emptyString READ getEmptyString NOTIFY languageChanged)
     void setVictory();
     bool isVictory(int *pPos) ;
     bool isMoveAllowed(int currentPosition, int newPosition);
     Q_INVOKABLE QString currentText() ;
     Q_INVOKABLE QString currentInstructions() ;
     Q_INVOKABLE void language(int l);
+    QString getEmptyString();
 signals: //signal qui sert à communiquer avec le jeu
     void changePos() ; //changer position
     void changeText() ;
     void changeInstruction() ;
+    void languageChanged();
 public slots:
 private:
     Player player1, player2 ;
@@ -44,6 +47,7 @@ private:
     bool victory ;
     int roundCount; //compteur des coups déjà faits, afin de savoir dans quelle partie du jeu on est
     TranslationTest* myObj;
+    int currentLanguage = 0;
 };
 
 #endif // GAME_H

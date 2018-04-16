@@ -19,6 +19,8 @@ SOURCES += main.cpp \
     game.cpp \
     translationtest.cpp
 
+TRANSLATIONS += t1_fr.ts
+
 RESOURCES += qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model

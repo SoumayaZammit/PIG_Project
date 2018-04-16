@@ -9,7 +9,7 @@
 
 using namespace std;
 
-Game::Game(string j1, string j2, QObject *parent): QObject(parent),player1(j1,"#000000",true),player2(j2,"#aaaaaa",false),message(j1,j2)
+Game::Game(string j1, string j2, QObject *parent): QObject(parent),player1(j1,"#000000",true),player2(j2,"#aaaaaa",false),message(j1,j2,currentLanguage)
 {
     roundCount = 0 ;
     tokenList = new Token[6] ;
@@ -282,12 +282,13 @@ return victory;
 
 
  QString Game::currentText() {
-    return message.getText(roundCount, victory) ;
+    return message.getText(roundCount, victory, currentLanguage) ;
  }
 
 
  QString Game::currentInstructions() {
-    return message.getInstructions(roundCount, victory) ;
+     cout << "currentInstructions lang = " << currentLanguage << endl;
+    return message.getInstructions(roundCount, victory, currentLanguage) ;
  }
 
  void Game::setPlayerColor(int player, QString color){
@@ -297,14 +298,18 @@ return victory;
      }else if(player == 2){
          player2.setColor(color);
      }
+ }
 
-
+ QString Game::getEmptyString() {
+     return "";
  }
 
  void Game::language(int l){
      cout<<l<<endl;
+     currentLanguage = l;
     if (l==0)
      myObj->selectLanguage(QString("English"));
     else
      myObj->selectLanguage(QString("Français"));
+    languageChanged();
  }

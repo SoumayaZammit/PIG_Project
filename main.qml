@@ -24,7 +24,7 @@ Window {
 
     ColorDialog {
         id: colorDialogP1
-        title: "Choose your color"
+        title: qsTr("Choose your color") +vueGame.emptyString
         onAccepted: {
             vueGame.setPlayerColor(1, colorDialogP1.color)
             console.log(colorDialogP1.color)
@@ -38,7 +38,7 @@ Window {
     }
     ColorDialog {
         id: colorDialogP2
-        title: "Choose your color"
+        title: qsTr("Choose your color") +vueGame.emptyString
         onAccepted: {
             vueGame.setPlayerColor(2, colorDialogP2.color)
             console.log(colorDialogP2.color)
@@ -86,7 +86,7 @@ Window {
             x: 363
             y: 160
             height: 25
-            text: qsTr("Language")
+            text: qsTr("Language") +vueGame.emptyString
             style: Text.Normal
             font.family: "Verdana"
             font.weight: Font.Black
@@ -106,7 +106,7 @@ Window {
             y: 230
             width: 53
             height: 25
-            text: qsTr("Player1")
+            text: qsTr("Player1")+vueGame.emptyString
             verticalAlignment: Text.AlignVCenter
             font.bold: true
             font.weight: Font.Black
@@ -118,7 +118,7 @@ Window {
             x: 364
             y: 272
             height: 25
-            text: qsTr("Player2")
+            text: qsTr("Player2")+vueGame.emptyString
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Black
             font.bold: true
@@ -131,7 +131,7 @@ Window {
             y: 385
             width: 102
             height: 42
-            text: qsTr("Start")
+            text: qsTr("Start")+vueGame.emptyString
             activeFocusOnPress: true
             isDefault: false
             onClicked: {
@@ -145,7 +145,7 @@ Window {
             id: text_titre
             x: 213
             y: 65
-            text: qsTr("Jeu d'araignée")
+            text: qsTr("Jeu d'araignée")+vueGame.emptyString
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 34
         }
@@ -156,7 +156,7 @@ Window {
             y: 230
             width: 130
             height: 23
-            text: qsTr("Color P1")
+            text: qsTr("Color P1")+vueGame.emptyString
             activeFocusOnPress: true
             onClicked:{
                 colorDialogP1.open();
@@ -169,7 +169,7 @@ Window {
             y: 274
             width: 130
             height: 23
-            text: qsTr("Color P2")
+            text: qsTr("Color P2")+vueGame.emptyString
             activeFocusOnPress: true
             onClicked:{
                 colorDialogP2.open();
@@ -182,7 +182,7 @@ Window {
             y: 160
             width: 75
             height: 25
-            text: qsTr("English")
+            text: qsTr("English")+vueGame.emptyString
             onClicked :vueGame.language(0)
         }
 
@@ -192,14 +192,14 @@ Window {
             y: 160
             width: 75
             height: 26
-            text: qsTr("Français")
+            text: qsTr("Français")+vueGame.emptyString
             onClicked :vueGame.language(1)
         }
     }
 
     ApplicationWindow {
         id: childWindow
-        title: "Game"
+        title: qsTr("Game") +vueGame.emptyString
         width: 750
         height: 480
         maximumHeight: 480
@@ -252,7 +252,7 @@ Window {
                 id: text_message
                 x: 475
                 y: 117
-                text: vueGame.currentText
+                text: vueGame.currentText + vueGame.emptyString
                 font.pixelSize: 18
                 color: "#568203"
                 wrapMode: Text.WordWrap
@@ -265,7 +265,7 @@ Window {
                 id: text1
                 x: 475
                 y: 217
-                text: vueGame.currentInstructions
+                text: vueGame.currentInstructions + vueGame.emptyString
                 font.pixelSize: 15
                 color: "#A91101"
                 wrapMode: Text.WordWrap
